@@ -1,30 +1,50 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { User } from '../core/models/user.model';
+import { from, Observable, of } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) {}
 
-  constructor(private afAuth: AngularFireAuth) {}
-
-  async login(email: string, password: string): Promise<void> {
-    try {
-      await this.afAuth.signInWithEmailAndPassword(email, password);
-      // Login successful, redirect or handle accordingly
-    } catch (error) {
-      console.error('Login Error:', error);
-      throw error;
-    }
+  login(email: string, password: string): Observable<any> {
+    return from(this.afAuth.signInWithEmailAndPassword(email, password));
   }
 
-  async register(email: string, password: string): Promise<void> {
-    try {
-      await this.afAuth.createUserWithEmailAndPassword(email, password);
-      // Registration successful, redirect or handle accordingly
-    } catch (error) {
-      console.error('Registration Error:', error);
-      throw error;
-    }
+  register(user: User, password: string): Observable<any> {
+    return from(this.afAuth.createUserWithEmailAndPassword(user.email, password)).pipe(
+      switchMap((credential) => {
+        user.uid = credential.user?.uid || '';
+        const userPlainObject = {
+          uid: user.uid,
+          name: user.name,
+          email: user.email,
+          role: user.role
+        };
+        return this.firestore.collection('users').doc(user.uid).set(userPlainObject);
+      })
+    );
+  }
+
+  logout(): Observable<void> {
+    return from(this.afAuth.signOut());
+  }
+
+  getUser(): Observable<User | null> {
+    return this.afAuth.authState.pipe(
+      switchMap((user) => {
+        if (user) {
+          return this.firestore.collection<User>('users').doc(user.uid).valueChanges().pipe(
+            map((userData) => userData || null) // Convert undefined to null
+          );
+        } else {
+          return of(null);
+        }
+      })
+    );
   }
 }

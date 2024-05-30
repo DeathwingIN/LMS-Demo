@@ -6,6 +6,7 @@ export interface FirebaseConfig {
   messagingSenderId: string;
   appId: string;
   measurementId: string;
+
 }
 
 export interface Environment {

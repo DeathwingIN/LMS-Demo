@@ -23,7 +23,10 @@ import {environment} from "../environments/environment";
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import {AngularFireAuth} from "@angular/fire/auth";
+import {FormsModule} from "@angular/forms";
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+
 
 
 
@@ -42,6 +45,7 @@ import {AngularFireAuth} from "@angular/fire/auth";
     AssignmentDetailComponent,
     FooterComponent,
     HomeComponent,
+    DashboardComponent,
 
   ],
   imports: [
@@ -52,7 +56,8 @@ import {AngularFireAuth} from "@angular/fire/auth";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireAuth
+    FormsModule,
+
 
   ],
   providers: [

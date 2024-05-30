@@ -8,7 +8,7 @@ export const environment: Environment = {
     projectId: "lms-demo-57b70",
     storageBucket: "lms-demo-57b70.appspot.com",
     messagingSenderId: "239754805071",
-    appId: "1:239754805071:web:bb15e808c4d7666e13cf3a",
-    measurementId: "G-BP06Q7L0E7"
+    appId: "1:239754805071:web:81fe692e3b81910113cf3a",
+    measurementId: "G-2HSE80JQ8E"
   }
 };
