@@ -15,6 +15,7 @@ import { AssignmentDetailComponent } from './features/assignments/assignment-det
 import { CoreModule } from './core/core/core.module';
 import { SharedModule } from './shared/shared/shared.module';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { HomeComponent } from './shared/components/home/home.component';
 
 
 
@@ -31,6 +32,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     AssignmentListComponent,
     AssignmentDetailComponent,
     FooterComponent,
+    HomeComponent,
 
   ],
   imports: [
