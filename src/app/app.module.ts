@@ -16,6 +16,15 @@ import { CoreModule } from './core/core/core.module';
 import { SharedModule } from './shared/shared/shared.module';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HomeComponent } from './shared/components/home/home.component';
+import {environment} from "../environments/environment";
+
+
+// Import AngularFire and environment
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import {AngularFireAuth} from "@angular/fire/auth";
+
 
 
 
@@ -40,6 +49,10 @@ import { HomeComponent } from './shared/components/home/home.component';
     AppRoutingModule,
     CoreModule,
     SharedModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireAuth
 
   ],
   providers: [
