@@ -12,6 +12,9 @@ import { LessonListComponent } from './features/lessons/lesson-list/lesson-list.
 import { LessonDetailComponent } from './features/lessons/lesson-detail/lesson-detail.component';
 import { AssignmentListComponent } from './features/assignments/assignment-list/assignment-list.component';
 import { AssignmentDetailComponent } from './features/assignments/assignment-detail/assignment-detail.component';
+import { CoreModule } from './core/core/core.module';
+import { SharedModule } from './shared/shared/shared.module';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 
 
@@ -27,11 +30,14 @@ import { AssignmentDetailComponent } from './features/assignments/assignment-det
     LessonDetailComponent,
     AssignmentListComponent,
     AssignmentDetailComponent,
+    FooterComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule,
+    SharedModule,
 
   ],
   providers: [
