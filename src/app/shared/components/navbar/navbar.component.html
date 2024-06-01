@@ -1,13 +1,13 @@
-<nav>
+<!-- navbar.component.html -->
+<mat-toolbar color="primary">
   <div class="nav-container">
-    <a class="nav-logo" href="/">LMS</a>
-    <ul class="nav-links">
-      <li><a routerLink="/home">Home</a></li>
-      <li><a routerLink="/courses">Courses</a></li>
-      <li><a routerLink="/lessons">Lessons</a></li>
-      <li><a routerLink="/assignments">Assignments</a></li>
-      <li><a routerLink="/login">Login</a></li>
-      <li><a routerLink="/register">Register</a></li>
-    </ul>
+    <a mat-button routerLink="/" class="nav-logo">LMS</a>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/home">Home</button>
+    <button mat-button routerLink="/courses">Courses</button>
+    <button mat-button routerLink="/lessons">Lessons</button>
+    <button mat-button routerLink="/assignments">Assignments</button>
+    <button mat-button routerLink="/login">Login</button>
+    <button mat-button routerLink="/register">Register</button>
   </div>
-</nav>
+</mat-toolbar>

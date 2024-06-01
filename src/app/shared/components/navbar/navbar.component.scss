@@ -1,33 +1,21 @@
-nav {
-  background-color: #333;
-  color: white;
-  padding: 1rem;
-}
-
+/* navbar.component.css */
 .nav-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .nav-logo {
   font-size: 1.5rem;
+  font-weight: bold;
   text-decoration: none;
   color: white;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+.spacer {
+  flex: 1 1 auto;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: white;
-  font-size: 1rem;
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
+button.mat-button {
+  margin: 0 10px;
 }

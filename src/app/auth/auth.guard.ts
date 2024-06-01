@@ -1,28 +1,23 @@
 import { Injectable } from '@angular/core';
-import { CanMatch, Route, UrlSegment, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { map, take } from 'rxjs/operators';
+import { CanActivate } from '@angular/router'; // Changed from `CanActivateFn`
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthGuard implements CanMatch {
-
+export class AuthGuard implements CanActivate { // Changed to implement `CanActivate`
   constructor(private authService: AuthService, private router: Router) {}
 
-  canMatch(
-    route: Route,
-    segments: UrlSegment[]
-  ): Observable<boolean | UrlTree> {
+  canActivate(): any { // Changed to implement `canActivate()`
     return this.authService.getUser().pipe(
       take(1),
       map(user => {
         if (user) {
           return true;
         } else {
-          // Redirect to the login page
-          return this.router.createUrlTree(['/login']);
+          return this.router.createUrlTree(['/login']); // Changed `router` to `this.router`
         }
       })
     );
