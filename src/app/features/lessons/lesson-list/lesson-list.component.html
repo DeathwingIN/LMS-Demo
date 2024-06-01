@@ -1,1 +1,13 @@
-<p>lesson-list works!</p>
+<div class="container">
+  <h2>Lessons</h2>
+  <mat-card *ngFor="let lesson of lessons" class="lesson-card">
+    <mat-card-title>{{ lesson.title }}</mat-card-title>
+    <mat-card-content>{{ lesson.content }}</mat-card-content>
+    <mat-card-actions>
+      <button mat-button [routerLink]="['/lessons', lesson.courseId, lesson.id]">View Details</button>
+    </mat-card-actions>
+  </mat-card>
+  <button mat-fab color="primary" class="add-button" [routerLink]="['/lessons', courseId, 'new']">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

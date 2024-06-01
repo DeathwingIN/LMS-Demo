@@ -1,1 +1,15 @@
-<p>lesson-detail works!</p>
+<div class="container">
+  <h2>{{ lessonId ? 'Edit Lesson' : 'Create Lesson' }}</h2>
+  <form (ngSubmit)="saveLesson()">
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="lesson.title" name="title" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Content</mat-label>
+      <textarea matInput [(ngModel)]="lesson.content" name="content" required></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">{{ lessonId ? 'Update' : 'Create' }}</button>
+    <button mat-raised-button color="warn" *ngIf="lessonId" (click)="deleteLesson()">Delete</button>
+  </form>
+</div>

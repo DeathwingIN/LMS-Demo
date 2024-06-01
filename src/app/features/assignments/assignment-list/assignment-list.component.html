@@ -1,1 +1,13 @@
-<p>assignment-list works!</p>
+<div class="container">
+  <h2>Assignments</h2>
+  <mat-card *ngFor="let assignment of assignments" class="assignment-card">
+    <mat-card-title>{{ assignment.title }}</mat-card-title>
+    <mat-card-content>{{ assignment.description }}</mat-card-content>
+    <mat-card-actions>
+      <button mat-button [routerLink]="['/assignments', assignment.lessonId, assignment.id]">View Details</button>
+    </mat-card-actions>
+  </mat-card>
+  <button mat-fab color="primary" class="add-button" [routerLink]="['/assignments', lessonId, 'new']">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

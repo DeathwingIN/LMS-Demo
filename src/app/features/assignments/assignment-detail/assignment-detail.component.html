@@ -1,1 +1,19 @@
-<p>assignment-detail works!</p>
+<div class="container">
+  <h2>{{ assignmentId ? 'Edit Assignment' : 'Create Assignment' }}</h2>
+  <form (ngSubmit)="saveAssignment()">
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="assignment.title" name="title" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="assignment.description" name="description" required></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Due Date</mat-label>
+      <input matInput [(ngModel)]="assignment.dueDate" name="dueDate" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">{{ assignmentId ? 'Update' : 'Create' }}</button>
+    <button mat-raised-button color="warn" *ngIf="assignmentId" (click)="deleteAssignment()">Delete</button>
+  </form>
+</div>
