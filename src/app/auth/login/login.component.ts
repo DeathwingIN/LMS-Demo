@@ -20,8 +20,8 @@ export class LoginComponent {
       const user = userCredential.user;
 
       if (user) {
-        const userDoc = await this.authService.getUser().toPromise(); // Removed user.uid
-        const userData = userDoc?.data(); // Changed to userDoc?.data()
+        const userDoc = await this.authService.getUserData(user.uid).toPromise();
+        const userData = userDoc.data();
 
         if (userData) {
           if (userData.role === 'student') {

@@ -33,4 +33,9 @@ export class AuthService {
   getUser(): Observable<any> {
     return this.afAuth.authState;
   }
+
+  // Add this method to fetch user data
+  getUserData(uid: string): Observable<any> {
+    return this.firestore.collection('users').doc(uid).get();
+  }
 }
