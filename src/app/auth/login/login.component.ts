@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,11 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   async onLogin() {
     try {
@@ -24,10 +29,14 @@ export class LoginComponent {
         const userData = userDoc.data();
 
         if (userData) {
+          this.snackBar.open('Login successful!', 'Close', {
+            duration: 3000,
+          });
+
           if (userData.role === 'student') {
-            await this.router.navigate(['/student']);
+            await this.router.navigate(['/student', user.uid]);
           } else if (userData.role === 'teacher') {
-            await this.router.navigate(['/teacher']);
+            await this.router.navigate(['/teacher', user.uid]);
           }
         }
       }

@@ -1,13 +1,25 @@
-<!-- navbar.component.html -->
 <mat-toolbar color="primary">
   <div class="nav-container">
-    <a mat-button routerLink="/" class="nav-logo">LMS</a>
-    <span class="spacer"></span>
-    <button mat-button routerLink="/home">Home</button>
-    <button mat-button routerLink="/courses">Courses</button>
-    <button mat-button routerLink="/lessons">Lessons</button>
-    <button mat-button routerLink="/assignments">Assignments</button>
-    <button mat-button routerLink="/login">Login</button>
-    <button mat-button routerLink="/register">Register</button>
+    <a mat-button routerLink="/" class="nav-logo">
+      <img src="assets/logo.svg" alt="LMS Logo" height="30px">
+      <span class="logo-text">Your LMS Name</span>
+    </a>
+    <nav class="nav-links">
+      <a mat-button routerLink="/home">Home</a>
+      <a mat-button routerLink="/courses">Courses</a>
+      <a mat-button routerLink="/lessons">Lessons</a>
+      <a mat-button routerLink="/assignments">Assignments</a>
+      <ul class="dropdown">
+        <li *ngIf="!isLoggedIn">
+          <a mat-button routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="!isLoggedIn">
+          <a mat-button routerLink="/register">Register</a>
+        </li>
+        <li *ngIf="isLoggedIn">
+          <a mat-button (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </mat-toolbar>

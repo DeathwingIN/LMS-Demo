@@ -23,8 +23,8 @@ const routes: Routes = [
   { path: 'assignments/:lessonId/:id', component: AssignmentDetailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'student', component: StudentComponent, canActivate: [AuthGuard] },
-  { path: 'teacher', component: TeacherComponent, canActivate: [AuthGuard] },
+  { path: 'student/:id', component: StudentComponent, canActivate: [AuthGuard] },
+  { path: 'teacher/:id', component: TeacherComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
 
