@@ -34,9 +34,9 @@ export class LoginComponent {
           });
 
           if (userData.role === 'student') {
-            await this.router.navigate(['/student', user.uid]);
+            await this.router.navigate(['/student', user.uid], { state: { userData } });
           } else if (userData.role === 'teacher') {
-            await this.router.navigate(['/teacher', user.uid]);
+            await this.router.navigate(['/teacher', user.uid], { state: { userData } });
           }
         }
       }
