@@ -7,9 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  imageSrc1 = 'assets/images/U1.png';
-  imageSrc2 = 'assets/images/U1.png';
-  imageSrc5 = 'assets/images/U1.png';
-  imageSrc6 = 'assets/images/U1.png';
+  imageSrc1 = 'assets/logo.png';
+
 
 }
