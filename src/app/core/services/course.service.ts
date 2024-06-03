@@ -1,31 +1,26 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { Course } from '../models/course.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
-
   constructor(private firestore: AngularFirestore) {}
 
-  getCourses(): Observable<any> {
-    return this.firestore.collection('courses').snapshotChanges();
-  }
-
-  getCourse(courseId: string): Observable<any> {
-    return this.firestore.collection('courses').doc(courseId).get();
-  }
-
-  addCourse(course: any): Promise<any> {
+  createCourse(course: Course) {
     return this.firestore.collection('courses').add(course);
   }
 
-  updateCourse(courseId: string, course: any): Promise<void> {
+  updateCourse(courseId: string, course: Partial<Course>) {
     return this.firestore.collection('courses').doc(courseId).update(course);
   }
 
-  deleteCourse(courseId: string): Promise<void> {
+  deleteCourse(courseId: string) {
     return this.firestore.collection('courses').doc(courseId).delete();
+  }
+
+  getCourses() {
+    return this.firestore.collection('courses').snapshotChanges();
   }
 }

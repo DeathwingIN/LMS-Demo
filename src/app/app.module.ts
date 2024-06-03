@@ -23,6 +23,7 @@ import { withFetch } from '@angular/common/http';
 
 
 // Import AngularFire and environment
+
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
@@ -40,6 +41,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import { StudentComponent } from './student/student.component';
 import { TeacherComponent } from './teacher/teacher.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -58,6 +60,7 @@ import { TeacherComponent } from './teacher/teacher.component';
     HomeComponent,
     StudentComponent,
     TeacherComponent,
+    DashboardComponent,
 
   ],
   imports: [
@@ -89,6 +92,7 @@ import { TeacherComponent } from './teacher/teacher.component';
     MatButtonModule,
     MatSelectModule,
     MatCardModule,
+
 
 
 
