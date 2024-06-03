@@ -99,3 +99,39 @@ body {
 .community-info p {
   font-size: 1.2em;
 }
+
+
+//stat section
+.stat {
+  justify-content: space-between;
+  background-color: var(--grey-background, #f8fafc);
+  display: flex;
+  gap: 20px;
+  color: var(--grey-900, #0f172a);
+  padding: 40px 80px;
+}
+
+.course {
+  display: flex;
+  flex-direction: column;
+}
+
+.count {
+  align-self: center;
+  font: 600 32px/130% Inter, sans-serif;
+}
+
+.description {
+  margin-top: 6px;
+  font: 400 14px/150% Inter, sans-serif;
+}
+
+.divider {
+  border-color: rgba(226, 232, 240, 1);
+  border-style: solid;
+  border-width: 4px;
+  background-color: #e2e8f0;
+  width: 1px;
+  height: 55px;
+  margin: auto 0;
+}
