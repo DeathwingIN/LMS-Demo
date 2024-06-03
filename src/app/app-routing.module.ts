@@ -7,11 +7,11 @@ import { AssignmentListComponent } from "./features/assignments/assignment-list/
 import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
 import { AuthGuard } from './auth/auth.guard';
-import {StudentComponent} from "./student/student.component";
-import {TeacherComponent} from "./teacher/teacher.component";
-import {AssignmentDetailComponent} from "./features/assignments/assignment-detail/assignment-detail.component";
-import {CourseDetailComponent} from "./features/courses/course-detail/course-detail.component";
-import {LessonDetailComponent} from "./features/lessons/lesson-detail/lesson-detail.component"; // Import the AuthGuard
+import { StudentComponent } from "./student/student.component";
+import { TeacherComponent } from "./teacher/teacher.component";
+import { AssignmentDetailComponent } from "./features/assignments/assignment-detail/assignment-detail.component";
+import { CourseDetailComponent } from "./features/courses/course-detail/course-detail.component";
+import { LessonDetailComponent } from "./features/lessons/lesson-detail/lesson-detail.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -26,8 +26,6 @@ const routes: Routes = [
   { path: 'student/:id', component: StudentComponent, canActivate: [AuthGuard] },
   { path: 'teacher/:id', component: TeacherComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-
-
 ];
 
 @NgModule({

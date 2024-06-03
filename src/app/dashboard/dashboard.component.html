@@ -1,11 +1,12 @@
-<!-- dashboard.component.html -->
 <div>
   <h2>Courses</h2>
   <ul>
     <li *ngFor="let course of courses">
       {{ course.title }} - {{ course.description }}
+      <button (click)="deleteCourse(course.id)">Delete</button>
     </li>
   </ul>
+  <button (click)="createCourse({title: 'New Course', description: 'Course Description'})">Add Course</button>
 </div>
 
 <div>
@@ -13,8 +14,10 @@
   <ul>
     <li *ngFor="let lesson of lessons">
       {{ lesson.title }} - {{ lesson.content }}
+      <button (click)="deleteLesson(lesson.id)">Delete</button>
     </li>
   </ul>
+  <button (click)="createLesson({title: 'New Lesson', content: 'Lesson Content'})">Add Lesson</button>
 </div>
 
 <div>
@@ -22,6 +25,8 @@
   <ul>
     <li *ngFor="let assignment of assignments">
       {{ assignment.title }} - {{ assignment.description }}
+      <button (click)="deleteAssignment(assignment.id)">Delete</button>
     </li>
   </ul>
+  <button (click)="createAssignment({title: 'New Assignment', description: 'Assignment Description'})">Add Assignment</button>
 </div>

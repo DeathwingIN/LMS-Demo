@@ -28,6 +28,8 @@ export class LoginComponent {
         const userDoc = await this.authService.getUserData(user.uid).toPromise();
         const userData = userDoc.data();
 
+        console.log('User Data:', userData); // Debugging log
+
         if (userData) {
           this.snackBar.open('Login successful!', 'Close', {
             duration: 3000,
@@ -38,6 +40,8 @@ export class LoginComponent {
           } else if (userData.role === 'teacher') {
             await this.router.navigate(['/teacher', user.uid], { state: { userData } });
           }
+        } else {
+          this.errorMessage = 'User data not found.';
         }
       }
     } catch (error) {
