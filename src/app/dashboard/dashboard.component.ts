@@ -6,6 +6,7 @@ import { AssignmentService } from '../core/services/assignment.service';
 import { Course } from '../core/models/course.model';
 import { Lesson } from '../core/models/lesson.model';
 import { Assignment } from '../core/models/assignment.model';
+import { DocumentChangeAction } from '@angular/fire/compat/firestore'; // Import DocumentChangeAction
 
 @Component({
   selector: 'app-dashboard',
@@ -13,9 +14,9 @@ import { Assignment } from '../core/models/assignment.model';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  courses: DocumentChangeAction<unknown>[];
-  lessons: DocumentChangeAction<unknown>[];
-  assignments: DocumentChangeAction<unknown>[];
+  courses: any[] = [];
+  lessons: any[] = [];
+  assignments: any[] = [];
 
   constructor(
     private courseService: CourseService,
@@ -30,20 +31,24 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchCourses() {
-    this.courseService.getCourses().subscribe(courses => {
-      this.courses = courses;
+    this.courseService.getCourses().subscribe((courses: DocumentChangeAction<unknown>[]) => {
+      this.courses = courses.map(course => course.payload.doc.data());
     });
   }
 
   fetchLessons() {
-    this.lessonService.getLessons().subscribe(lessons => {
-      this.lessons = lessons;
+    // Assuming you have a courseId available, pass it to the getLessons method
+    const courseId = ''; // Provide courseId here
+    this.lessonService.getLessons(courseId).subscribe((lessons: DocumentChangeAction<unknown>[]) => {
+      this.lessons = lessons.map(lesson => lesson.payload.doc.data());
     });
   }
 
   fetchAssignments() {
-    this.assignmentService.getAssignments().subscribe(assignments => {
-      this.assignments = assignments;
+    // Assuming you have a lessonId available, pass it to the getAssignments method
+    const lessonId = ''; // Provide lessonId here
+    this.assignmentService.getAssignments(lessonId).subscribe((assignments: DocumentChangeAction<unknown>[]) => {
+      this.assignments = assignments.map(assignment => assignment.payload.doc.data());
     });
   }
 

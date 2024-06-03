@@ -4,11 +4,11 @@ import { AssignmentService } from '../../../core/services/assignment.service';
 @Component({
   selector: 'app-assignment-list',
   templateUrl: './assignment-list.component.html',
-  styleUrls: ['./assignment-list.component.css']
+  styleUrls: ['./assignment-list.component.scss']
 })
 export class AssignmentListComponent implements OnInit {
-  @Input() lessonId: string;
-  assignments: any[];
+  @Input() lessonId!: string; // Definite assignment assertion
+  assignments!: any[]; // Definite assignment assertion
 
   constructor(private assignmentService: AssignmentService) {}
 

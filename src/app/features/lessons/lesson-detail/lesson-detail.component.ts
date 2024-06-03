@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core'; // Import Input decorator
 import { ActivatedRoute, Router } from '@angular/router';
-import {LessonService} from "../../../core/services/lesson.service";
-
+import { LessonService } from '../../../core/services/lesson.service';
 
 @Component({
   selector: 'app-lesson-detail',
@@ -14,7 +13,7 @@ export class LessonDetailComponent implements OnInit {
   lesson: any = {
     title: '',
     content: '',
-    courseId: this.courseId
+    courseId: ''
   };
 
   constructor(
@@ -26,7 +25,7 @@ export class LessonDetailComponent implements OnInit {
   ngOnInit(): void {
     this.lessonId = this.route.snapshot.paramMap.get('id');
     if (this.lessonId) {
-      this.lessonService.getLesson(this.lessonId).subscribe((lesson: any) => {
+      this.lessonService.getLessons(this.lessonId).subscribe((lesson: any) => { // Corrected the method call to getLessons
         this.lesson = lesson.data();
       });
     }
@@ -38,7 +37,7 @@ export class LessonDetailComponent implements OnInit {
         this.router.navigate(['/lessons']);
       });
     } else {
-      this.lessonService.addLesson(this.lesson).then(() => {
+      this.lessonService.createLesson(this.lesson).then(() => {
         this.router.navigate(['/lessons']);
       });
     }

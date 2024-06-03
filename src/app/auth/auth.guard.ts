@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Router, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { map, take } from 'rxjs/operators';
-import { Observable } from 'rxjs'; // Import Observable from 'rxjs'
-import { CanActivate,  } from '@angular/router';
+import { CanActivate, UrlTree } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -16,10 +16,14 @@ export class AuthGuard implements CanActivate {
       take(1),
       map(user => {
         if (user) {
-          return true;
-        } else {
-          return this.router.createUrlTree(['/login']);
+          if (user.role === 'teacher') {
+            return true;
+          } else if (user.role === 'student') {
+            return this.router.createUrlTree(['/student']);
+          }
         }
+        // If user is not found or does not match any role, redirect to login
+        return this.router.createUrlTree(['/login']);
       })
     );
   }

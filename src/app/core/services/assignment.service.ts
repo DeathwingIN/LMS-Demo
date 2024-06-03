@@ -1,6 +1,9 @@
+// assignment.service.ts
 import { Injectable } from '@angular/core';
-import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore'; // Import AngularFirestore
+import { Observable } from 'rxjs';
 import { Assignment } from '../models/assignment.model';
+import { Lesson } from '../models/lesson.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,19 +11,19 @@ import { Assignment } from '../models/assignment.model';
 export class AssignmentService {
   constructor(private firestore: AngularFirestore) {}
 
-  createAssignment(assignment: Assignment) {
+  createAssignment(assignment: Assignment): Promise<any> {
     return this.firestore.collection('assignments').add(assignment);
   }
 
-  updateAssignment(assignmentId: string, assignment: Partial<Assignment>) {
+  updateAssignment(assignmentId: string, assignment: Partial<Assignment>): Promise<void> {
     return this.firestore.collection('assignments').doc(assignmentId).update(assignment);
   }
 
-  deleteAssignment(assignmentId: string) {
+  deleteAssignment(assignmentId: string): Promise<void> {
     return this.firestore.collection('assignments').doc(assignmentId).delete();
   }
 
-  getAssignments(lessonId: string) {
-    return this.firestore.collection('assignments', ref => ref.where('lessonId', '==', lessonId)).snapshotChanges();
+  getAssignments(lessonId: string): Observable<any[]> {
+    return this.firestore.collection('assignments', ref => ref.where('lessonId', '==', lessonId)).valueChanges();
   }
 }

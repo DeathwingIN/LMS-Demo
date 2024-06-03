@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { AngularFirestore, QueryFn } from '@angular/fire/compat/firestore'; // Import AngularFirestore
 import { Course } from '../models/course.model';
 
 @Injectable({

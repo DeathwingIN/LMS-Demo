@@ -24,8 +24,11 @@ export class CourseDetailComponent implements OnInit {
   ngOnInit(): void {
     this.courseId = this.route.snapshot.paramMap.get('id');
     if (this.courseId) {
-      this.courseService.getCourse(this.courseId).subscribe((course: any) => {
-        this.course = course.data();
+      this.courseService.getCourses().subscribe((courses: any[]) => {
+        const course = courses.find(c => c.id === this.courseId);
+        if (course) {
+          this.course = course;
+        }
       });
     }
   }
@@ -34,10 +37,14 @@ export class CourseDetailComponent implements OnInit {
     if (this.courseId) {
       this.courseService.updateCourse(this.courseId, this.course).then(() => {
         this.router.navigate(['/courses']);
+      }).catch(error => {
+        console.error('Error updating course:', error);
       });
     } else {
-      this.courseService.addCourse(this.course).then(() => {
+      this.courseService.createCourse(this.course).then(() => {
         this.router.navigate(['/courses']);
+      }).catch(error => {
+        console.error('Error creating course:', error);
       });
     }
   }
@@ -46,6 +53,8 @@ export class CourseDetailComponent implements OnInit {
     if (this.courseId) {
       this.courseService.deleteCourse(this.courseId).then(() => {
         this.router.navigate(['/courses']);
+      }).catch(error => {
+        console.error('Error deleting course:', error);
       });
     }
   }

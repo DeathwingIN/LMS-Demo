@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {AssignmentService} from "../../../core/services/assignment.service";
-
+import { AssignmentService } from '../../../core/services/assignment.service';
 
 @Component({
   selector: 'app-assignment-detail',
@@ -27,9 +26,12 @@ export class AssignmentDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.assignmentId = this.route.snapshot.paramMap.get('id');
-    if (this.assignmentId) {
-      this.assignmentService.getAssignment(this.assignmentId).subscribe((assignment: any) => {
-        this.assignment = assignment.data();
+    if (this.assignmentId && this.lessonId) { // Check if lessonId is available
+      this.assignmentService.getAssignments(this.lessonId).subscribe((assignments: any[]) => { // Pass lessonId as argument
+        const assignment = assignments.find(a => a.id === this.assignmentId);
+        if (assignment) {
+          this.assignment = assignment;
+        }
       });
     }
   }
@@ -40,7 +42,7 @@ export class AssignmentDetailComponent implements OnInit {
         this.router.navigate(['/assignments']);
       });
     } else {
-      this.assignmentService.addAssignment(this.assignment).then(() => {
+      this.assignmentService.createAssignment(this.assignment).then(() => {
         this.router.navigate(['/assignments']);
       });
     }
@@ -55,10 +57,6 @@ export class AssignmentDetailComponent implements OnInit {
   }
 
   submitAssignment(studentSubmission: any): void {
-    if (this.assignmentId) {
-      this.assignmentService.submitAssignment(this.assignmentId, studentSubmission).then(() => {
-        console.log('Submission successful');
-      });
-    }
+    // Implement submitAssignment method
   }
 }

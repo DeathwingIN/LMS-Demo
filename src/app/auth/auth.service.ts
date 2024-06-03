@@ -19,13 +19,7 @@ export class AuthService {
     return from(this.afAuth.createUserWithEmailAndPassword(user.email, password)).pipe(
       switchMap((credential) => {
         user.uid = credential.user?.uid || '';
-        const userPlainObject = {
-          uid: user.uid,
-          name: user.name,
-          email: user.email,
-          role: user.role
-        };
-        return from(this.firestore.collection('users').doc(user.uid).set(userPlainObject));
+        return this.firestore.collection('users').doc(user.uid).set(Object.assign({}, user));
       })
     );
   }
