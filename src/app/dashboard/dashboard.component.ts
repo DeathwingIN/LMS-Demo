@@ -1,3 +1,4 @@
+// src/app/dashboard/dashboard.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../core/services/course.service';
 import { LessonService } from '../core/services/lesson.service';
@@ -35,6 +36,25 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  createCourse(course: any) {
+    this.courseService.createCourse(course).then(() => {
+      this.fetchCourses();
+    });
+  }
+
+  updateCourse(courseId: string, course: any) {
+    this.courseService.updateCourse(courseId, course).then(() => {
+      this.fetchCourses();
+    });
+  }
+
+  deleteCourse(courseId: string) {
+    this.courseService.deleteCourse(courseId).then(() => {
+      this.fetchCourses();
+    });
+  }
+
+  // Similarly handle Lessons and Assignments...
   fetchLessons() {
     const courseId = ''; // Provide courseId here
     this.lessonService.getLessons(courseId).subscribe((lessons: DocumentChangeAction<unknown>[]) => {
@@ -52,24 +72,6 @@ export class DashboardComponent implements OnInit {
         const data = assignment.payload.doc.data() as { [key: string]: any }; // Cast data to an object
         return { id: assignment.payload.doc.id, ...data };
       });
-    });
-  }
-
-  createCourse(course: any) {
-    this.courseService.createCourse(course).then(() => {
-      this.fetchCourses();
-    });
-  }
-
-  updateCourse(courseId: string, course: any) {
-    this.courseService.updateCourse(courseId, course).then(() => {
-      this.fetchCourses();
-    });
-  }
-
-  deleteCourse(courseId: string) {
-    this.courseService.deleteCourse(courseId).then(() => {
-      this.fetchCourses();
     });
   }
 

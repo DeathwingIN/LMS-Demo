@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, UrlTree } from '@angular/router';
-import { Observable, of } from 'rxjs'; // Import 'of' from 'rxjs'
+import { Observable, of } from 'rxjs';
 import { AuthService } from './auth.service';
 import { map, switchMap, take } from 'rxjs/operators';
 
@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
             map(userDoc => {
               const userData = userDoc.data();
               if (userData && userData.role === 'teacher') {
-                return true;
+                return this.router.createUrlTree(['/teacher', user.uid]); // Redirect to teacher component
               } else if (userData && userData.role === 'student') {
                 return this.router.createUrlTree(['/student', user.uid]);
               }
@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate {
             })
           );
         } else {
-          return of(this.router.createUrlTree(['/login'])); // Wrap UrlTree in 'of()'
+          return of(this.router.createUrlTree(['/login']));
         }
       })
     );

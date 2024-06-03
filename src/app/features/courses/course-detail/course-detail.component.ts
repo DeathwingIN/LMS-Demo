@@ -1,3 +1,4 @@
+// src/app/courses/course-detail/course-detail.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../../../core/services/course.service';

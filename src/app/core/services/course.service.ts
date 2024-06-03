@@ -1,5 +1,6 @@
+// src/app/core/services/course.service.ts
 import { Injectable } from '@angular/core';
-import { AngularFirestore, QueryFn } from '@angular/fire/compat/firestore'; // Import AngularFirestore
+import { AngularFirestore, DocumentChangeAction } from '@angular/fire/compat/firestore';
 import { Course } from '../models/course.model';
 
 @Injectable({

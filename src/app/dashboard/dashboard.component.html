@@ -1,3 +1,4 @@
+<!-- src/app/dashboard/dashboard.component.html -->
 <div>
   <h2>Courses</h2>
   <ul>
@@ -6,8 +7,10 @@
       <button (click)="deleteCourse(course.id)">Delete</button>
     </li>
   </ul>
-  <button (click)="createCourse({title: 'New Course', description: 'Course Description'})">Add Course</button>
+  <button (click)="createCourse({title: 'New Course', description: 'Course Description', teacherId: '1'})">Add Course</button>
 </div>
+
+<!-- Add similar sections for Lessons and Assignments -->
 
 <div>
   <h2>Lessons</h2>
