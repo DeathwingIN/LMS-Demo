@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
             map(userDoc => {
               const userData = userDoc.data();
               if (userData && userData.role === 'teacher') {
-                return this.router.createUrlTree(['/teacher', user.uid]); // Redirect to teacher component
+                return true;
               } else if (userData && userData.role === 'student') {
                 return this.router.createUrlTree(['/student', user.uid]);
               }

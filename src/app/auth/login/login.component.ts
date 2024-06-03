@@ -35,10 +35,10 @@ export class LoginComponent {
             duration: 3000,
           });
 
-          if (userData.role === 'student') {
-            await this.router.navigate(['/student', user.uid], { state: { userData } });
-          } else if (userData.role === 'teacher') {
+          if (userData.role === 'teacher') {
             await this.router.navigate(['/teacher', user.uid], { state: { userData } });
+          } else if (userData.role === 'student') {
+            await this.router.navigate(['/student', user.uid], { state: { userData } });
           }
         } else {
           this.errorMessage = 'User data not found.';
