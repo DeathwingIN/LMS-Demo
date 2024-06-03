@@ -1,34 +1,218 @@
-.home-container {
-  text-align: center;
-  padding: 2rem;
-}
-
-.home-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.home-container p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-}
-
-.home-links {
+.div {
+  background-color: #fff;
   display: flex;
+  flex-direction: column;
+  padding: 40px 80px 24px;
+}
+@media (max-width: 991px) {
+  .div {
+    padding: 0 20px;
+  }
+}
+.img {
+  object-fit: cover;
+  object-position: center;
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  align-self: end;
+  margin-right: 65px;
+  max-width: 100%;
+}
+@media (max-width: 991px) {
+  .img {
+    margin-right: 10px;
+  }
+}
+.div-2 {
+  align-self: center;
+  z-index: 10;
+  display: flex;
+  margin-top: -185px;
+  width: 100%;
+  max-width: 1229px;
+  padding-bottom: 27px;
+  flex-direction: column;
+  align-items: end;
+}
+@media (max-width: 991px) {
+  .div-2 {
+    max-width: 100%;
+  }
+}
+.div-3 {
+  align-self: start;
+  display: flex;
+  width: 817px;
+  max-width: 100%;
+  gap: 20px;
+  font-size: 16px;
+  justify-content: space-between;
+}
+@media (max-width: 991px) {
+  .div-3 {
+    flex-wrap: wrap;
+  }
+}
+.div-4 {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 991px) {
+  .div-4 {
+    max-width: 100%;
+  }
+}
+.div-5 {
+  color: var(--grey-900, #0f172a);
+  letter-spacing: -0.8px;
+  font: 700 40px/56px Inter, sans-serif;
+}
+@media (max-width: 991px) {
+  .div-5 {
+    max-width: 100%;
+  }
+}
+.div-6 {
+  color: var(--grey-text-light, #64748b);
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  margin-top: 16px;
+}
+@media (max-width: 991px) {
+  .div-6 {
+    max-width: 100%;
+  }
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px// or any other value depending on your layout needs
+
+}
+
+.div-7 {
+  flex: 1;
+  font-family: Inter, sans-serif;
   justify-content: center;
-  gap: 1rem;
+  border-radius: 8px;
+  background-color: var(--primary-600, #2563eb);
+  align-self: flex-start;
+  color: var(--white, #fff);
+  font-weight: 500;
+  margin: 15px;
+  padding: 16px;
+
+  &:hover {
+    background-color: var(--primary-700, #1d4ed8);
+    cursor: pointer;
+  }
 }
 
-.home-link {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
 
-.home-link:hover {
-  background-color: #0056b3;
+
+.div-8 {
+  align-content: flex-start;
+  width: 101px;
+  height: 80px;
+  margin: auto 0;
+}
+.div-9 {
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  aspect-ratio: 1;
+  width: 204px;
+  max-width: 100%;
+  margin: -246px 259px 0 0;
+}
+@media (max-width: 991px) {
+  .div-9 {
+    margin: -200px 10px 0 0;
+  }
+}
+.img-2 {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.img-3 {
+  aspect-ratio: 1.28;
+  object-fit: fill;
+  object-position: center;
+  width: 183px;
+  z-index: 10;
+  margin-top: -56px;
+  max-width: 100%;
+}
+.img-4 {
+  aspect-ratio: 2.08;
+  object-fit: fill;
+  object-position: center;
+  width: 100%;
+  stroke-width: 1px;
+  stroke: var(--grey-300, #cbd5e1);
+  border-color: rgba(203, 213, 225, 1);
+  border-style: solid;
+  border-width: 1px;
+  z-index: 10;
+  margin: 19px 0 -15px;
+}
+@media (max-width: 991px) {
+  .img-4 {
+    margin-bottom: 10px;
+  }
+}
+.img-5 {
+  aspect-ratio: 0.7;
+  object-fit: fill;
+  object-position: center;
+  width: 150px;
+  stroke-width: 1.409px;
+  stroke: var(--grey-300, #cbd5e1);
+  border-color: rgba(203, 213, 225, 1);
+  border-style: solid;
+  border-width: 1px;
+  z-index: 10;
+  margin-top: -44px;
+  max-width: 100%;
+}
+.div-10 {
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 0 8px 0 rgba(59, 130, 246, 0.12);
+  border-color: rgba(226, 232, 240, 1);
+  border-style: solid;
+  border-width: 1px;
+  background-color: var(--white, #fff);
+  display: flex;
+  width: 167px;
+  max-width: 100%;
+  flex-direction: column;
+  font-size: 12px;
+  color: var(--grey-900, #0f172a);
+  font-weight: 600;
+  margin: -131px 182px 0 0;
+  padding: 13px 14px;
+}
+@media (max-width: 991px) {
+  .div-10 {
+    margin-right: 10px;
+  }
+}
+.img-6 {
+  aspect-ratio: 3.23;
+  object-fit: fill;
+  object-position: center;
+  width: 100%;
+  align-self: center;
+}
+.div-11 {
+  font-family: Inter, sans-serif;
+  margin-top: 11px;
 }

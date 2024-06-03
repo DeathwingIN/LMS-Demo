@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule, provideClientHydration} from '@angular/platform-browser';
-import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -18,6 +17,8 @@ import {SharedModule} from './shared/shared/shared.module';
 import {FooterComponent} from './shared/components/footer/footer.component';
 import {HomeComponent} from './shared/components/home/home.component';
 import {environment} from "../environments/environment";
+import { provideHttpClient } from '@angular/common/http';
+import { withFetch } from '@angular/common/http';
 
 
 
@@ -88,6 +89,7 @@ import { TeacherComponent } from './teacher/teacher.component';
     MatButtonModule,
     MatSelectModule,
     MatCardModule,
+
 
 
 

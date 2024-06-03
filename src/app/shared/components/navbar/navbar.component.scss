@@ -1,70 +1,71 @@
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Improved spacing */
-  width: 100%;
+/* Modern Toolbar Styles */
+.mat-toolbar {
+  background-color: #fff; /* Set white background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex; /* Allow flexbox layout */
+  justify-content: center; /* Center items horizontally */
+  padding: 1rem; /* Add some padding */
+  height: 64px; /* Set toolbar height */
 }
 
+.nav-container {
+  display: flex; /* Allow flexbox layout for internal elements */
+  align-items: center; /* Align vertically in center */
+  width: 100%; /* Make container full width */
+  justify-content: space-between; /* Space items between left and right */
+}
+
+.nav-left, .nav-right {
+  flex: 1; /* Allow left and right sections to grow */
+}
+
+.nav-middle {
+  display: flex; /* Center items in the middle */
+  justify-content: center; /* Center navigation links */
+  flex: 2; /* Make middle section larger */
+}
+
+/* Style the logo */
 .nav-logo {
-  display: flex; /* Allow for logo + name combination */
-  align-items: center;
+  display: flex; /* Allow flexbox for logo text */
+  align-items: center; /* Align logo text vertically */
+  text-decoration: none; /* Remove underline from anchor tag */
 }
 
 .nav-logo img {
-  margin-right: 10px; /* Adjust spacing between logo and text */
+  margin-right: 1rem;
+  height: 65px; /* Set logo height */
+  width: 65px; /* Maintain aspect ratio */
 }
 
 .logo-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: #d51d1d;
+  font-weight: bold; /* Bold logo text */
 }
 
+/* Style the navigation links */
 .nav-links {
-  display: flex; /* Horizontal layout for main links */
-  margin: 0; /* Remove default margin */
+  display: flex; /* Allow flexbox layout */
+  list-style: none; /* Remove default list styling */
   padding: 0; /* Remove default padding */
-  list-style: none; /* Remove bullet points */
+  margin: 0; /* Remove default margin */
 }
 
 .nav-links a {
-  margin: 0 10px; /* Consistent spacing between links */
-  padding: 0.5rem 1rem; /* Add some padding for comfort */
+  margin-left: 1rem; /* Add margin between links */
   text-decoration: none; /* Remove underline */
-  color: #c23737; /* Light text on primary background */
-  border-radius: 4px; /* Subtle rounded corners */
-  transition: all 0.2s ease-in-out; /* Smooth hover effect */
+  color: #333; /* Set dark text color */
+  font-weight: 500; /* Slightly bolder text */
+  transition: color 0.2s ease-in-out; /* Smooth color transition on hover */
 }
 
 .nav-links a:hover {
-  background-color: rgba(0, 0, 0, 0.1); /* Subtle hover background */
+  color: #007bff; /* Change color on hover (blue from Bootstrap) */
+  border-radius: 5px;
 }
 
-.dropdown {
-  display: none; /* Hide initial dropdown state */
-  position: absolute; /* Position for dropdown menu */
-  top: 100%; /* Position below the main link */
-  left: 0; /* Align to the left of the parent link */
-  background-color: #fff; /* Light background for dropdown */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow */
-  border-radius: 4px; /* Rounded corners for dropdown */
-  padding: 0.5rem; /* Inner padding for dropdown items */
-}
-
-.nav-links a.active {
-  background-color: rgba(0, 0, 0, 0.2); /* Highlight active link */
-}
-
-.nav-links:hover .dropdown {
-  display: block; /* Show dropdown on hover of parent link */
-}
-
-.dropdown li {
-  margin: 0 5px; /* Spacing between dropdown items */
-  padding: 5px; /* Padding for each dropdown item */
-}
-
-.dropdown a {
-  color: #333; /* Darker text for dropdown items */
+/* Responsive Adjustments (Optional) */
+@media (max-width: 768px) {
+  .nav-links a {
+    font-size: 0.8rem; /* Reduce font size for smaller screens */
+  }
 }
